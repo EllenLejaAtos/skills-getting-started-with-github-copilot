@@ -14,8 +14,6 @@ def reset_activities_state():
     app_module.activities.clear()
     app_module.activities.update(copy.deepcopy(_BASELINE_ACTIVITIES))
     yield
-    app_module.activities.clear()
-    app_module.activities.update(copy.deepcopy(_BASELINE_ACTIVITIES))
 
 
 @pytest.fixture
