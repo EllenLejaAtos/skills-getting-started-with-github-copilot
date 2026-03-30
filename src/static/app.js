@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const activity = deleteButton.dataset.activity;
     const email = deleteButton.dataset.email;
 
-    const confirmed = window.confirm(`Teilnehmer wirklich abmelden?\n\n${email}\n${activity}`);
+    const confirmed = window.confirm(`Really unregister this participant?\n\n${email}\n${activity}`);
     if (!confirmed) {
       return;
     }
