@@ -1,5 +1,3 @@
-from src import app as app_module
-
 
 def test_signup_adds_new_participant(client):
     # Arrange
@@ -13,7 +11,8 @@ def test_signup_adds_new_participant(client):
     # Assert
     assert response.status_code == 200
     assert response.json() == {"message": f"Signed up {email} for {activity_name}"}
-    assert email in app_module.activities[activity_name]["participants"]
+    activities_response = client.get("/activities")
+    assert email in activities_response.json()[activity_name]["participants"]
 
 
 def test_signup_returns_400_for_duplicate_participant(client):

@@ -1,5 +1,3 @@
-from src import app as app_module
-
 
 def test_unregister_removes_existing_participant(client):
     # Arrange
@@ -13,7 +11,8 @@ def test_unregister_removes_existing_participant(client):
     # Assert
     assert response.status_code == 200
     assert response.json() == {"message": f"Unregistered {email} from {activity_name}"}
-    assert email not in app_module.activities[activity_name]["participants"]
+    activities_response = client.get("/activities")
+    assert email not in activities_response.json()[activity_name]["participants"]
 
 
 def test_unregister_returns_404_for_unknown_activity(client):
